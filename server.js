@@ -10,6 +10,25 @@ const bodyParser = require("body-parser");
 const upload = require("./data.json");
 app.use(bodyParser.json());
 
+// Setting up CORS for deployment
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:8080",
+  "https://brainflix-react.herokuapp.com",
+];
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request" + origin);
+    if (whitelist.indexOf(origin) !== -1 || origin) {
+      console.log("Origin acceptable");
+      callback(null, true);
+    } else {
+      console.log("Origin rejected");
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
 app.get("/", (_req, res) => {
   res.send("Listening on port 8080");
 });
