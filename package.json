@@ -8,15 +8,14 @@
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "cd client && npm start",
-    "start": "node server.js"
+    "client": "cd client && npm start"
   },
   "author": "Abdul",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.20.0",
-    "concurrently": "^5.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
