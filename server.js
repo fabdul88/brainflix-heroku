@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 const cors = require("cors");
 require("dotenv").config();
 const Video = require("./model/videos");
@@ -11,7 +11,7 @@ const upload = require("./data.json");
 app.use(bodyParser.json());
 
 app.get("/", (_req, res) => {
-  res.send("Listening on port 8080");
+  res.send(`Listening on port ${PORT}`);
 });
 
 app.get("/videos", async function (_req, res) {

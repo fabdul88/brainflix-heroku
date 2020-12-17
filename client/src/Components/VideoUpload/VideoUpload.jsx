@@ -28,11 +28,8 @@ class UploadVideo extends React.Component {
       image: "../../assets/Images/Upload-video-preview.jpg",
     };
 
-    axios({
-      url: "/videos",
-      method: "POST",
-      data: payload,
-    })
+    axios
+      .post("/videos", payload)
       .then((res) => {
         this.setState({
           title: "",
