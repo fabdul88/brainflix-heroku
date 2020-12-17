@@ -1,33 +1,14 @@
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 8080;
 const cors = require("cors");
 require("dotenv").config();
-const { PORT, BACKEND_URL } = process.env;
 const Video = require("./model/videos");
 const VideoInfo = new Video();
 app.use(cors());
 const bodyParser = require("body-parser");
 const upload = require("./data.json");
 app.use(bodyParser.json());
-
-// Setting up CORS for deployment
-const whitelist = [
-  "http://localhost:3000",
-  "http://localhost:8080",
-  "https://brainflix-react.herokuapp.com",
-];
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request" + origin);
-    if (whitelist.indexOf(origin) !== -1 || origin) {
-      console.log("Origin acceptable");
-      callback(null, true);
-    } else {
-      console.log("Origin rejected");
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
 
 app.get("/", (_req, res) => {
   res.send("Listening on port 8080");
@@ -55,8 +36,8 @@ if (process.env.NODE_ENV === "production") {
 
   const path = require("path");
   app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+    path.resolve(__dirname, "client/build", "index.html");
   });
 }
 
-app.listen(PORT, () => console.log(`started on ${BACKEND_URL} ${PORT}`));
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));
