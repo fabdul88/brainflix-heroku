@@ -9,6 +9,7 @@ app.use(cors());
 const bodyParser = require("body-parser");
 const upload = require("./data.json");
 app.use(bodyParser.json());
+DANGEROUSLY_DISABLE_HOST_CHECK = true;
 
 app.get("/", (_req, res) => {
   res.send(`Listening on port ${PORT}`);
