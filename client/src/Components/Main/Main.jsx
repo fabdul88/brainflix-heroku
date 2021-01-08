@@ -21,9 +21,9 @@ class Main extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`/videos/`)
+      .get("/videos/")
       .then((response) => {
-        axios.get(`/videos/1af0jruup5gu/`).then((res) => {
+        axios.get("/videos/1af0jruup5gu/").then((res) => {
           let mainVideo = res.data;
           mainVideo.comments = res.data.comments;
 
