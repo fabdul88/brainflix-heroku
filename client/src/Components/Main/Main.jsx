@@ -21,9 +21,9 @@ class Main extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`/videos/`)
+      .get(`http://localhost:8080/videos/`)
       .then((response) => {
-        axios.get(`/videos/1af0jruup5gu/`).then((res) => {
+        axios.get(`http://localhost:8080/videos/1af0jruup5gu/`).then((res) => {
           let mainVideo = res.data;
           mainVideo.comments = res.data.comments;
 
@@ -44,7 +44,7 @@ class Main extends React.Component {
     }
     const videoId = this.props.match.params.id || "1af0jruup5gu";
     axios
-      .get(`/videos/${videoId}`)
+      .get(`http://localhost:8080/videos/${videoId}`)
       .then((response) => {
         this.setState({
           mainVideo: response.data,
