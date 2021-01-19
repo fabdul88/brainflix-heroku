@@ -10,9 +10,9 @@ const bodyParser = require("body-parser");
 const upload = require("./data.json");
 app.use(bodyParser.json());
 
-app.get("/", (_req, res) => {
-  res.send(`Listening on port ${PORT}`);
-});
+// app.get("/", (_req, res) => {
+//   res.send(`Listening on port ${PORT}`);
+// });
 
 app.get("/videos", async function (_req, res) {
   const videos = await VideoInfo.getVideos();
